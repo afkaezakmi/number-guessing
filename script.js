@@ -4,7 +4,7 @@ do{
     let maximum = parseInt(prompt("ENTER MAXIMUM NUMBER"));
 
     while(isNaN(maximum) || maximum < 25 || maximum > 100){
-        console.log("ERROR!");
+        console.log("\nERROR!");
         if(isNaN(maximum)){
             console.log("PLEASE INPUT A NUMBER!")
         }
@@ -26,27 +26,36 @@ do{
     let computer_number = Math.floor(Math.random() * maximum) + 1;
 
     let tries = 5;
-    let guess;
+    console.log("\nGUESS THE COMPUTER GENERATED NUMBER")
+    let guess = parseInt(prompt("GUESS THE COMPUTER GENERATED NUMBER"));
+    tries -= 1;
+    console.log(`TRIES LEFT ${tries}`);
+    if(guess === computer_number){
+        continue;
+    } else{
     while(tries !== 0){
-        guess = parseInt(prompt("GUESS THE COMPUTER GENERATED NUMBER"));
-        if(guess === computer_number){
-            break;
-        }
-        else if(guess > computer_number){
-            console.log("\nYOUR GUESS IS GREATER THAN THE RANDOM NUMBER! GUESS AGAIN");
-        } else if(guess < computer_number){
-            console.log("\nYOUR GUESS IS LESS THAN THE RANDOM NUMBER! GUESS AGAIN");
-        } else if(isNaN(guess)){
-            console.log("\nPLEASE ENTER YOUR GUESS");
-            tries += 1;
-        } else{
-            console.log("\nINVALID INPUT");
-            tries += 1;
-        }
+            if(guess === computer_number){
+                break;
+            }
+            else if(guess > computer_number){
+                console.log("\nYOUR GUESS IS GREATER THAN THE RANDOM NUMBER! GUESS AGAIN");
+                guess = prompt("YOUR GUESS IS GREATER THAN THE RANDOM NUMBER! GUESS AGAIN");
+            } else if(guess < computer_number){
+                console.log("\nYOUR GUESS IS LESS THAN THE RANDOM NUMBER! GUESS AGAIN");
+                guess = prompt("YOUR GUESS IS LESS THAN THE RANDOM NUMBER! GUESS AGAIN");
+            } else if(isNaN(guess)){
+                console.log("\nPLEASE ENTER YOUR GUESS");
+                tries += 1;
+            } else{
+                console.log("\nINVALID INPUT");
+                tries += 1;
+            }
 
-        tries -= 1;
-        console.log(`TRIES LEFT ${tries}`);
+            tries -= 1;
+            console.log(`TRIES LEFT ${tries}`);
+        };
     }
+    
     if(tries === 0){
         computer_score += 1;
         console.log("THE COMPUTER WIN THIS ROUND!");

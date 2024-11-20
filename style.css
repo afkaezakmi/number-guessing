@@ -18,7 +18,7 @@ body{
     color: rgb(217, 221, 9);
     border-radius: 10px;
 }
-#instruction-title{
+.instruction-title{
     font-size: 40px;
     padding: 5px 0;
     justify-self: center;
